@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export const Header = (props) => {
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+
+  const handleToggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
   return (
-    <header id="header">
+    <header id="header" className={theme === "dark" ? "dark-mode" : ""}>
       <div className="intro">
         <div className="overlay">
           <div className="container">
@@ -19,6 +34,7 @@ export const Header = (props) => {
                 >
                   Learn More
                 </a>{" "}
+                <button onClick={handleToggleTheme}>Toggle Theme</button>
               </div>
             </div>
           </div>

@@ -16,3 +16,14 @@
     width: 110%;
   }
 }
+/* Add your light mode styles */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Add your dark mode styles */
+body.dark-mode {
+  background-color: black;
+  color: white;
+}
